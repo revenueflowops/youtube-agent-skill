@@ -19,11 +19,13 @@ python3 title.py titles.txt            # one per line, ranked
 
 ## Before you write
 
-1. Read `~/.claude/youtube/voice.md` if it exists. That is the user's voice profile: how they talk
-   on camera, the words they never use, who they are talking to, what they will not claim. If it
-   does not exist, ask for **three of their own videos**, read or transcribe them, infer the voice,
-   and write the file. A script in the wrong voice is worse than no script, because they have to
-   read it out loud.
+1. Read the voice file: `.claude/youtube/voice.md` in the current project if it exists, otherwise
+   `~/.claude/youtube/voice.md`. The project file wins, so each channel keeps its own voice. That is
+   the user's voice profile: how they talk on camera, the words they never use, who they are talking
+   to, what they will not claim. If neither exists, ask for **three of their own videos**, read or
+   transcribe them, infer the voice, and write the file (to the project path when working inside a
+   channel's project, otherwise the global one). A script in the wrong voice is worse than no
+   script, because they have to read it out loud.
 2. Never invent a number, a result or a source. If a figure would strengthen it and you do not have
    one, ask for it or write the line without it.
 

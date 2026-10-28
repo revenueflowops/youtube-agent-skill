@@ -44,8 +44,10 @@ rest works.
 
 Then spend ten minutes on [`templates/voice.md`](templates/voice.md). Copy it to
 `~/.claude/youtube/voice.md` and fill it in, or send Claude three of your own videos and say "write
-my voice.md from these". Every skill reads that file. It matters more here than anywhere else,
-because you have to say the words out loud.
+my voice.md from these". Every skill reads that file. Running more than one channel? Put a
+`.claude/youtube/voice.md` in each channel's project folder; the skills read the project file first
+and fall back to the global one. It matters more here than anywhere else, because you have to say
+the words out loud.
 
 ## The eleven
 

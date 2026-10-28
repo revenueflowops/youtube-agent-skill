@@ -1,8 +1,9 @@
 # voice.md
 
-Copy this to `~/.claude/youtube/voice.md` and fill it in. Every skill in this pack reads it. Ten
-minutes here is worth more than any prompt you will ever write, because on YouTube you have to say
-the words out loud and a script in the wrong voice is unreadable on camera.
+Copy this to `~/.claude/youtube/voice.md` and fill it in, or to `.claude/youtube/voice.md` inside a
+channel's project to give that channel its own voice (the project file wins). Every skill in this
+pack reads it. Ten minutes here is worth more than any prompt you will ever write, because on
+YouTube you have to say the words out loud and a script in the wrong voice is unreadable on camera.
 
 ## Who I am talking to
 
