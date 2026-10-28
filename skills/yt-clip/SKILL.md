@@ -47,9 +47,12 @@ python3 clip.py cut video.mp4 --start 61.2 --end 104.8 --hook "Nobody tells you 
    -frames:v 1 frame.jpg`) and look at it before choosing.
 5. **Cut.** `clip.py cut --plan`. Each span is snapped to whole words with a breath either side,
    cropped, scaled to 1080x1920, captioned two or three words at a time with the spoken word in
-   yellow, and appended to `clips/clips.csv` - the tracking sheet `/yt-track` fills in later.
+   yellow, and appended to `clips/clips.csv`, the cut log that `/yt-campaign check` and
+   `/yt-track post` read.
 6. **Check one.** Pull a frame from the middle of the first clip and look at it: are the captions
    clear of the speaker's face, is anyone cut in half by the crop. Fix `x` and recut if not.
+7. **Before posting**, run `/yt-campaign check` on each clip for its campaign and platform, then
+   log it with `/yt-track post` once it is live.
 
 ## What it will not do
 

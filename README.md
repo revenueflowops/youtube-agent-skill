@@ -62,6 +62,8 @@ the words out loud.
 | `/yt-retention` | Your retention export read properly: hook leak, the cliffs, the slide, and what to change. |
 | `/yt-shorts` | The Shorts already inside a long video, with a new first line written for each. |
 | `/yt-clip` | The video file into finished Shorts: whisper transcript, moments picked by the `/yt-shorts` rules, 9:16 crop, burned captions, a tracking row. |
+| `/yt-campaign` | The clipping campaigns you are in, with rate, budget and rules, and a check of each clip against its campaign before you post it. |
+| `/yt-track` | Post to views to dollars, one row per clip per platform, and a weekly summary that says which campaigns to keep. |
 | `/yt-seo` | The description, the tags that are worth having, and the three queries this should win. |
 | `/yt-chapters` | Chapters from a transcript, validated against YouTube's own rules so they render. |
 | `/yt-audit` | The whole channel, ending in ONE fix rather than twenty. |
@@ -83,6 +85,13 @@ python3 skills/yt-viral/swipe.py collected.json --min 2.0      # outliers by own
 `/yt-clip` is the exception: `skills/yt-clip/clip.py` is plain Python too, but it drives ffmpeg (built
 with libass: `brew install ffmpeg-full`) and whisper.cpp (`brew install whisper-cpp`) to make the
 actual video files.
+
+```bash
+python3 skills/yt-clip/clip.py transcribe video.mp4 --out clips/       # word-timed transcript
+python3 skills/yt-clip/clip.py cut video.mp4 --plan clips/plan.json    # captioned 9:16 clips
+python3 skills/yt-campaign/campaign.py check clip.mp4 --campaign ID    # clip vs campaign rules
+python3 skills/yt-track/track.py summary                               # the week in views and $
+```
 
 ## The fine print
 

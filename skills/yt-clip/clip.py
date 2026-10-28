@@ -12,9 +12,9 @@ sentences with timecodes. Read the .txt to pick moments; the cutter reads the .j
 
 CUT snaps each span to word boundaries, crops the frame to 9:16 (centre by default, --x 0.0-1.0
 to slide the window), scales to 1080x1920, burns word-by-word captions with the spoken word
-highlighted, puts the --hook on screen for the first two seconds, and appends a row to clips.csv
-for /yt-track to fill in later. A --plan file is a JSON list of {"start", "end", "hook", "name",
-"x"} objects, one per clip.
+highlighted, puts the --hook on screen for the first two seconds, and appends a row to clips.csv,
+the cut log /yt-campaign and /yt-track read the hook and source moment from. A --plan file is a
+JSON list of {"start", "end", "hook", "name", "x"} objects, one per clip.
 
 WHAT IT NEEDS. ffmpeg built with libass (`brew install ffmpeg-full`; the plain `ffmpeg` bottle has
 no subtitles filter), whisper.cpp (`brew install whisper-cpp`) and one ggml model in
@@ -177,10 +177,9 @@ def cut_one(video, words, start, end, out, hook="", name=None, x=0.5, track=None
     new = not os.path.exists(track)
     with open(track, "a", newline="") as f:
         cw = csv.writer(f)
-        if new: cw.writerow(["cut_date", "source", "clip", "start", "end", "seconds", "first_line",
-                             "hook", "platform", "campaign", "posted_url", "posted_date", "views", "earned"])
+        if new: cw.writerow(["cut_date", "source", "clip", "start", "end", "seconds", "first_line", "hook"])
         cw.writerow([datetime.date.today().isoformat(), os.path.basename(video), os.path.basename(dst),
-                     round(t0, 2), round(t1, 2), round(dur, 1), first, hook, "", "", "", "", "", ""])
+                     round(t0, 2), round(t1, 2), round(dur, 1), first, hook])
     print(f"{ts(t0)}-{ts(t1)}  {dur:4.1f}s  {dst}")
     if dur < 15 or dur > 60:
         print(f"  WARNING {dur:.0f}s is outside the 15-60s Shorts window", file=sys.stderr)
