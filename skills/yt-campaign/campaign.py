@@ -42,14 +42,14 @@ def runway(c):
 
 def cmd_list(camps):
     today = datetime.date.today()
-    print(f"{'id':<22} {'status':<8} {'$/1K':>5} {'net/1K':>6} {'left':>8} {'runway':>7} {'cap':>5}  platforms")
+    print(f"{'id':<22} {'status':<11} {'$/1K':>5} {'net/1K':>6} {'left':>8} {'runway':>7} {'cap':>5}  platforms")
     for c in sorted(camps, key=lambda c: (c.get("status") != "active", -c.get("rate_per_1k", 0))):
         fee = fee_frac(c.get("fee_pct", 0))
         rw = runway(c)
         ends = c.get("ends")
         if ends and datetime.date.fromisoformat(ends) < today: status = "ended"
         else: status = c.get("status", "active")
-        print(f"{c['id']:<22} {status:<8} {c['rate_per_1k']:>5.2f} {c['rate_per_1k'] * (1 - fee):>6.2f} "
+        print(f"{c['id']:<22} {status:<11} {c['rate_per_1k']:>5.2f} {c['rate_per_1k'] * (1 - fee):>6.2f} "
               f"{c.get('budget_left', 0):>8,.0f} {(f'{rw:.0f}d' if rw else '-'):>7} "
               f"{c.get('per_clip_cap') or '-':>5}  {','.join(c.get('platforms', []))}")
         checked = c.get("budget_checked")
