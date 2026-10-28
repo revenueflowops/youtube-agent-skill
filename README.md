@@ -61,6 +61,7 @@ the words out loud.
 | `/yt-viral` | What is working in your niche, ranked by multiple over each channel's own median. |
 | `/yt-retention` | Your retention export read properly: hook leak, the cliffs, the slide, and what to change. |
 | `/yt-shorts` | The Shorts already inside a long video, with a new first line written for each. |
+| `/yt-clip` | The video file into finished Shorts: whisper transcript, moments picked by the `/yt-shorts` rules, 9:16 crop, burned captions, a tracking row. |
 | `/yt-seo` | The description, the tags that are worth having, and the three queries this should win. |
 | `/yt-chapters` | Chapters from a transcript, validated against YouTube's own rules so they render. |
 | `/yt-audit` | The whole channel, ending in ONE fix rather than twenty. |
@@ -78,6 +79,10 @@ python3 skills/yt-chapters/chapters.py transcript.srt          # validated chapt
 python3 skills/yt-retention/retention.py retention.csv         # where they left, and why
 python3 skills/yt-viral/swipe.py collected.json --min 2.0      # outliers by own-channel multiple
 ```
+
+`/yt-clip` is the exception: `skills/yt-clip/clip.py` is plain Python too, but it drives ffmpeg (built
+with libass: `brew install ffmpeg-full`) and whisper.cpp (`brew install whisper-cpp`) to make the
+actual video files.
 
 ## The fine print
 
